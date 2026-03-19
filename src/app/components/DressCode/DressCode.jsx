@@ -13,7 +13,7 @@ const DressCode = () => {
   { id: 'p1', hex: '#FFFACD', name: 'Lemon' },       // Lemon Chiffon
   { id: 'p2', hex: '#FFDAB9', name: 'Peach' },       // Peach Puff
   { id: 'p3', hex: '#DCD0FF', name: 'Lila' },       // Pale Lilac
-  { id: 'p4', hex: '#F5E6BE', name: 'Beige' },       // Beige (Suavizado)
+  { id: 'p4', hex: '#ede9d0', name: 'Beige' },       // Beige (Suavizado)
 
   // --- LOS TUYOS (Versión Pastelizada) ---
   { id: 'p5', hex: '#F2C6CF', name: 'Malva' },       // Más luz
