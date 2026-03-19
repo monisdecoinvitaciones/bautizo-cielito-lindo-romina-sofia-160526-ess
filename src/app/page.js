@@ -32,8 +32,9 @@ export default function Page() {
       <MesaRegalos/>
       <RSVPSection/>
      <Countdown/> 
-     <BotonInicio/>
+     
      <QuoteSection/>
+     <BotonInicio/>
      <FooterInvimon/>
      <Musica/>
      

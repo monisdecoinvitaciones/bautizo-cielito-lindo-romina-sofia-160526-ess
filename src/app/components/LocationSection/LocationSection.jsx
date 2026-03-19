@@ -15,7 +15,7 @@ const LocationSection = () => {
         ref={ref}
         className={`location-container ${isVisible ? 'show' : ''}`}
       >
-        <h2 className="location-title text-white">Ubicación</h2>
+        <h2 className="location-title text-white">Ubicaciones</h2>
 
         <div className="locations-grid">
           {/* TARJETA CEREMONIA */}

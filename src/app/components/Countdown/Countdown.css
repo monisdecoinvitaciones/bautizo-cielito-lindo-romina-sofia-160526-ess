@@ -242,3 +242,79 @@
 .is-visible .decor-papel-picado {
   opacity: 1; 
 }
+/* --- DECORACIONES DE PAPEL PICADO --- */
+.decor-papel-picado {
+  position: absolute;
+  z-index: 5;
+  /* Mantenemos el tamaño responsivo */
+  width: clamp(280px, 35vw, 420px); 
+  height: auto;
+  opacity: 0; 
+  pointer-events: none;
+  transition: opacity 1.5s ease-out 1s;
+}
+
+/* ESQUINA SUPERIOR IZQUIERDA */
+.decor-top-left {
+  /* Empujamos más hacia afuera para "limpiar" la esquina */
+  top: -25px; 
+  left: -25px;
+  transform: rotate(-0deg); /* Un toque de rotación lo hace ver más orgánico */
+}
+
+/* ESQUINA INFERIOR DERECHA */
+.decor-bottom-right {
+  /* Empujamos más hacia afuera */
+  bottom: -30px; 
+  right: -30px;
+  /* Rotación de 180 para que la esquina apunte al rincón */
+  transform: rotate(180deg); 
+}
+
+.decor-papel-picado img {
+  width: 100%;
+  height: auto;
+  display: block;
+  /* Filtro opcional por si el PNG es muy oscuro y quieres que sea más sutil */
+  filter: drop-shadow(0 5px 15px rgba(0,0,0,0.05));
+}
+
+/* --- ACTUALIZACIÓN DE COLORES (Gris Antracita y Rosa) --- */
+.countdown-section {
+  background-color: #ffffff;
+  /* Cambiado el verde por tu nuevo Gris Antracita */
+  color: #4A4A4A; 
+}
+
+.time-number {
+  /* Rosa principal de Invimon */
+  color: #d88a9a; 
+}
+
+.time-label {
+  /* Gris suave para las etiquetas */
+  color: #666666;
+  letter-spacing: 5px;
+}
+
+.time-divider {
+  /* Divisor rosa muy tenue */
+  background-color: rgba(216, 138, 154, 0.3);
+}
+
+/* --- AJUSTE MÓVIL --- */
+@media (max-width: 768px) {
+  .decor-top-left { 
+    top: -30px; 
+    left: -30px; 
+  }
+  
+  .decor-bottom-right { 
+    bottom: -30px; 
+    right: -30px; 
+  }
+
+  .time-number {
+    font-size: 4rem;
+  }
+}

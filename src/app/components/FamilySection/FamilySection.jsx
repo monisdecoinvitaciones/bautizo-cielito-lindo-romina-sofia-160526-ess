@@ -3,8 +3,23 @@ import React from 'react';
 import { useReveal } from '../../hooks/useReveal';
 import './FamilySection.css';
 
+// Sub-componente para el texto en arco
+const ArchedTitle = ({ text, id }) => (
+  <div className="arched-title-container">
+    {/* Aumentamos el viewBox a 600 para que el texto largo no choque con los bordes */}
+    <svg viewBox="0 0 600 120" className="arched-svg">
+      {/* El path ahora está centrado en un lienzo de 600 */}
+      <path id={id} d="M 50,100 Q 300,10 550,100" fill="transparent" />
+      <text className="arched-text">
+        <textPath xlinkHref={`#${id}`} startOffset="50%" textAnchor="middle">
+          {text}
+        </textPath>
+      </text>
+    </svg>
+  </div>
+);
+
 const FamilySection = () => {
-  // Sensores independientes para cada tarjeta
   const [ref1, isVisible1] = useReveal();
   const [ref2, isVisible2] = useReveal();
 
@@ -12,12 +27,14 @@ const FamilySection = () => {
     <section className="family-section-bg">
       <div className="family-container">
         
-        {/* GRUPO PADRES - Sensor 1 */}
+        {/* GRUPO PADRES */}
         <div 
           ref={ref1}
           className={`family-group ${isVisible1 ? 'reveal-visible' : 'reveal-hidden'}`}
         >
-          <h3 className="family-title">Mis Padres</h3>
+          {/* Título Arqueado */}
+          <ArchedTitle text="Mis Padres" id="curve-padres" />
+
           <div className="family-card-elegant">
             <div className="talavera-decor-top">❀</div>
             <div className="card-content">
@@ -29,19 +46,21 @@ const FamilySection = () => {
           </div>
         </div>
 
-        {/* SEPARADOR CENTRAL (Solo PC) */}
+        {/* SEPARADOR CENTRAL */}
         <div className="family-center-decor">
           <div className="ornament-line"></div>
           <span className="ornament-diamond">✦</span>
           <div className="ornament-line"></div>
         </div>
 
-        {/* GRUPO PADRINOS - Sensor 2 */}
+        {/* GRUPO PADRINOS */}
         <div 
           ref={ref2}
           className={`family-group ${isVisible2 ? 'reveal-visible' : 'reveal-hidden'}`}
         >
-          <h3 className="family-title">Mis Padrinos</h3>
+          {/* Título Arqueado */}
+          <ArchedTitle text="Mis Padrinos" id="curve-padrinos" />
+
           <div className="family-card-elegant">
             <div className="talavera-decor-top">❀</div>
             <div className="card-content">

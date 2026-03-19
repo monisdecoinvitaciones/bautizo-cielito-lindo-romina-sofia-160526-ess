@@ -84,7 +84,7 @@
     font-family: var(--font-moderna);
     font-weight: 300;
     letter-spacing: 10px;
-    font-size: clamp(0.7rem, 2.5vw, 1rem);
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
     margin-top: 5px;
     /* Un rosa casi blanco para que no sature */
     color: rgba(255, 255, 255, 0.85); 
@@ -105,7 +105,7 @@
 
 .date-number {
     letter-spacing: 5px;
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: 300;
     text-transform: uppercase;
 }

@@ -59,7 +59,7 @@ export default function MesaRegalos() {
               
               <h3 className="back-title-invimon">Liverpool</h3>
               <p className="back-info-invimon">
-                Nuestra mesa de regalos está <br/>
+                La mesa de regalos está <br/>
                 disponible bajo el número:
               </p>
               <div className="evento-number-invimon">51972127</div>

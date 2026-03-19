@@ -9,7 +9,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 90vh;
+  min-height: 80vh;
   position: relative;
   overflow: hidden; 
 }
@@ -26,40 +26,56 @@
 /* =========================================
    LÓGICA DE ANIMACIÓN INDEPENDIENTE
    ========================================= */
-
 .family-group {
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   max-width: 420px;
-  
-  /* Estado inicial base (PC) */
   opacity: 0;
   transform: translateY(40px);
   transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
   will-change: transform, opacity;
 }
 
-/* Cuando el sensor individual (ref1 o ref2) detecta scroll */
 .family-group.reveal-visible {
   opacity: 1;
   transform: translate(0, 0) !important;
 }
 
 /* =========================================
-   TARJETAS Y ESTILO
+   TEXTO ARQUEADO (FIX PARA PC)
    ========================================= */
-.family-title {
-  text-transform: uppercase;
-  letter-spacing: 5px;
-  font-size: 1.7rem;
-  color: #d88a9a; 
-  margin-bottom: 25px;
-  font-weight: 600;
-  text-align: center;
+.arched-title-container {
+  width: 120%; /* Permitimos que sea más ancho que el grupo para que no corte letras */
+  max-width: 570px; /* Espacio extra para "Mis Padrinos" */
+  height: 120px;
+  margin-bottom: -25px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 10;
+  overflow: visible; /* CRÍTICO: No corta lo que se sale */
 }
 
+.arched-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible; /* CRÍTICO: No corta las letras en los bordes */
+}
+
+.arched-text {
+  font-family: var(--font-moderna);
+  font-size: 2.3rem; 
+  font-weight: 700;
+  fill: #b5838d; 
+  text-transform: uppercase;
+  letter-spacing: 6px;
+}
+
+/* =========================================
+   TARJETAS Y ESTILO INTERNO
+   ========================================= */
 .family-card-elegant {
   position: relative;
   width: 100%;
@@ -75,7 +91,6 @@
   box-sizing: border-box;
 }
 
-/* Borde punteado interno */
 .family-card-elegant::before {
   content: '';
   position: absolute;
@@ -103,7 +118,7 @@
 }
 
 .name-text {
-  font-size: clamp(1.8rem, 2.2vw, 2rem);
+  font-size: clamp(1.85rem, 2.2vw, 2.5rem);
   color: #ffffff;
   margin: 0;
   font-family: var(--font-elegante), serif;
@@ -147,31 +162,39 @@
 }
 
 /* =========================================
-   RESPONSIVE (MÓVIL) - ENCUENTRO REAL
+   RESPONSIVE (MÓVIL)
    ========================================= */
 @media (max-width: 900px) {
   .family-section-bg { 
-    padding: 60px 15px; 
+    padding: 40px 15px; 
   }
   
   .family-container {
     flex-direction: column;
-    gap: 80px; /* Espacio aumentado para que se animen por separado al bajar */
+    gap: 0px; 
   }
 
-  /* Estado oculto: Los Padres vienen de Izquierda */
+  /* Animaciones laterales en móvil */
   .family-group:first-of-type.reveal-hidden {
     opacity: 0;
-    transform: translateX(-120px) translateY(0);
+    transform: translateX(-80px) translateY(0);
   }
 
-  /* Estado oculto: Los Padrinos vienen de Derecha */
   .family-group:last-of-type.reveal-hidden {
     opacity: 0;
-    transform: translateX(120px) translateY(0);
+    transform: translateX(80px) translateY(0);
   }
 
-  /* Ajuste de tarjeta en móvil */
+  /* Separador de diamante */
+  .family-group:first-of-type::after {
+    content: "✦";
+    display: block;
+    color: #f2bfc8;
+    font-size: 1.5rem;
+    margin: 15px 0;
+    text-align: center;
+  }
+
   .family-card-elegant {
     max-width: 310px;
     aspect-ratio: 1 / 1.35;
@@ -179,12 +202,20 @@
   }
 
   .family-center-decor {
-    display: none; /* Quitamos el adorno central en vertical */
+    display: none; 
   }
 
-  .family-title {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
+  /* Ajuste de Título Arqueado en móvil */
+  .arched-title-container {
+    width: 110%;
+    max-width: 340px;
+    height: 90px;
+    margin-bottom: -5px;
+  }
+
+  .arched-text {
+    font-size: 2.9rem;
+    letter-spacing: 4px;
   }
 
   .talavera-pattern-bottom {
