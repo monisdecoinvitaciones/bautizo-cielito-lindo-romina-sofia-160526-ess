@@ -1,0 +1,172 @@
+/* =========================
+   SECCIÓN DE FECHA
+========================= */
+.date-section {
+  position: relative;
+  padding: 80px 20px; /* Más aire para que la sección respire */
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.date-container {
+  max-width: 900px; /* Un poco más ancho para PC */
+  width: 100%;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* MARCO ELEGANTE */
+.date-frame {
+  border: 1px solid rgba(181, 131, 141, 0.25);
+  padding: 50px 60px; /* Padding mucho más generoso */
+  position: relative;
+  border-radius: 4px;
+  background: white;
+  
+  opacity: 0;
+  transform: translateY(15px);
+  transition: all 0.7s ease-out;
+}
+
+.reveal-visible .date-frame {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Adorno floral */
+.date-frame::before {
+  content: '❀';
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%) scale(0);
+  background: white;
+  padding: 0 20px;
+  color: #d88a9a;
+  font-size: 2.9rem; /* Flor más grande */
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.8s;
+}
+
+.reveal-visible .date-frame::before {
+  transform: translateX(-50%) scale(1);
+}
+
+/* EL NÚMERO: IMPACTO TOTAL */
+.date-day-number {
+  font-family: var(--font-elegante);
+  /* Mínimo 7rem, ideal 20vw, máximo 13rem para PC */
+  font-size: clamp(7rem, 20vw, 10rem); 
+  line-height: 0.8;
+  color: #d88a9a;
+  margin: 20px 0;
+  display: block;
+  font-weight: 300;
+}
+
+.reveal-visible .date-day-number { 
+  opacity: 1; 
+  transform: translateY(0); 
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.4s; 
+}
+
+/* TEXTOS COMPLEMENTARIOS */
+.save-the-date {
+  font-family: var(--font-moderna);
+  text-transform: uppercase;
+  letter-spacing: 10px; /* Espaciado muy elegante */
+  font-size: 1.5rem;
+  color: #544749;
+  margin-bottom: 40px;
+  display: block;
+}
+
+.date-month {
+  font-family: var(--font-moderna);
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  font-size: 1.8rem; /* Mes más grande */
+  color: #b5838d;
+  border-bottom: 1px solid rgba(181, 131, 141, 0.3);
+  padding-bottom: 8px;
+  display: inline-block;
+}
+
+.date-year {
+  font-family: var(--font-moderna);
+  letter-spacing: 16px; /* Año muy expandido estilo premium */
+  font-size: 1.7rem;
+  color: #8e6b55;
+  margin-top: 15px;
+  display: block;
+}
+
+.date-day-name {
+  font-family: var(--font-moderna);
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 1.6rem;
+  color: #544749;
+  margin-top: 25px;
+  display: block;
+}
+
+/* MARCA DE AGUA ENORME */
+.date-watermark {
+  position: absolute;
+  font-family: var(--font-elegante);
+  font-size: 25rem; /* Mucho más grande */
+  color: rgba(216, 138, 154, 0.04);
+  z-index: -1;
+  pointer-events: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* =========================
+   RESPONSIVE MÓVIL
+========================= */
+@media (max-width: 768px) {
+  .date-section { 
+    padding: 20px 15px; 
+  }
+
+  .date-frame { 
+    padding: 60px 20px; 
+  }
+
+  .date-day-number { 
+    /* En móvil se verá de un tamaño masivo pero controlado */
+    font-size: 8.5rem; 
+    margin: 10px 0;
+  }
+
+  .save-the-date { 
+    letter-spacing: 6px; 
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+  }
+
+  .date-month {
+    font-size: 1.5rem;
+    letter-spacing: 4px;
+  }
+
+  .date-year {
+    font-size: 1.8rem;
+    letter-spacing: 10px;
+  }
+
+  .date-day-name {
+    font-size: 1.4rem;
+    letter-spacing: 3px;
+  }
+
+  .date-watermark {
+    font-size: 15rem;
+  }
+}

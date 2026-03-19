@@ -1,0 +1,193 @@
+/* =========================================
+   FONDO Y CONTENEDOR PRINCIPAL
+   ========================================= */
+.family-section-bg {
+  background-color: #ffffff;
+  background-image: radial-gradient(#f2bfc8 0.6px, transparent 0.6px);
+  background-size: 24px 24px;
+  padding: 100px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  position: relative;
+  overflow: hidden; 
+}
+
+.family-container {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 50px;
+  max-width: 1200px;
+  width: 100%;
+}
+
+/* =========================================
+   LÓGICA DE ANIMACIÓN INDEPENDIENTE
+   ========================================= */
+
+.family-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 420px;
+  
+  /* Estado inicial base (PC) */
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform, opacity;
+}
+
+/* Cuando el sensor individual (ref1 o ref2) detecta scroll */
+.family-group.reveal-visible {
+  opacity: 1;
+  transform: translate(0, 0) !important;
+}
+
+/* =========================================
+   TARJETAS Y ESTILO
+   ========================================= */
+.family-title {
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 1.7rem;
+  color: #d88a9a; 
+  margin-bottom: 25px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.family-card-elegant {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1.4; 
+  background: #d88a9a; 
+  border-radius: 220px 220px 30px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 50px 30px 0 30px;
+  box-shadow: 0 20px 45px rgba(181, 131, 141, 0.25);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Borde punteado interno */
+.family-card-elegant::before {
+  content: '';
+  position: absolute;
+  inset: 15px;
+  border: 2px dashed rgba(255, 255, 255, 0.4);
+  border-radius: 205px 205px 20px 20px;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.talavera-decor-top {
+  font-size: 2.9rem;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+}
+
+.card-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.name-text {
+  font-size: clamp(1.8rem, 2.2vw, 2rem);
+  color: #ffffff;
+  margin: 0;
+  font-family: var(--font-elegante), serif;
+  line-height: 1.2;
+}
+
+.name-divider {
+  width: 50px;
+  height: 1px;
+  background: rgba(255,255,255,0.6);
+  margin: 20px auto;
+}
+
+.talavera-pattern-bottom {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  margin-bottom: 20px;
+  background-image: url('/fotos/estampado.png'); 
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  z-index: 1;
+}
+
+/* Decoración Central (Solo PC) */
+.family-center-decor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  color: #d88a9a;
+  align-self: center;
+  margin-top: 40px;
+}
+
+.ornament-line {
+  width: 40px;
+  height: 1px;
+  background: #d88a9a;
+}
+
+/* =========================================
+   RESPONSIVE (MÓVIL) - ENCUENTRO REAL
+   ========================================= */
+@media (max-width: 900px) {
+  .family-section-bg { 
+    padding: 60px 15px; 
+  }
+  
+  .family-container {
+    flex-direction: column;
+    gap: 100px; /* Espacio aumentado para que se animen por separado al bajar */
+  }
+
+  /* Estado oculto: Los Padres vienen de Izquierda */
+  .family-group:first-of-type.reveal-hidden {
+    opacity: 0;
+    transform: translateX(-120px) translateY(0);
+  }
+
+  /* Estado oculto: Los Padrinos vienen de Derecha */
+  .family-group:last-of-type.reveal-hidden {
+    opacity: 0;
+    transform: translateX(120px) translateY(0);
+  }
+
+  /* Ajuste de tarjeta en móvil */
+  .family-card-elegant {
+    max-width: 310px;
+    aspect-ratio: 1 / 1.35;
+    border-radius: 160px 160px 25px 25px;
+  }
+
+  .family-center-decor {
+    display: none; /* Quitamos el adorno central en vertical */
+  }
+
+  .family-title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+
+  .talavera-pattern-bottom {
+    height: 75px;
+  }
+}
