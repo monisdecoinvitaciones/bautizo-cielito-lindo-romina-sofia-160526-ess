@@ -13,10 +13,10 @@ const geistMono = Geist_Mono({
 
 // CONFIGURACIÓN DE METADATOS
 export const metadata = {
-  title: "Mi Bautizo Romina Sofía", // Cambia esto al nombre del evento
+  title: "Mi Bautizo Romina Sofía", 
   description: "Acompáñanos en este día tan especial. Haz clic para ver los detalles y confirmar tu asistencia.",
   
-  // 1. BLOQUEO DE BUSCADORES (Para que no salga en Google)
+  // 1. BLOQUEO DE BUSCADORES (Mantenido: No aparecerá en Google)
   robots: {
     index: false,
     follow: false,
@@ -31,11 +31,12 @@ export const metadata = {
   openGraph: {
     title: "¡Estás Invitado!",
     description: "Te esperamos con mucha ilusión. Haz clic para ver la invitación completa.",
-    url: "https://bautizo-romina-sofia.invimon.com", // Cambia por tu URL real
+    url: "https://bautizo-romina-sofia.invimon.com",
     siteName: "Invimon Digital",
     images: [
       {
-        url: "/fotos/portada.png", // LA RUTA DE TU IMAGEN DE MINIATURA
+        // CORRECCIÓN: Ruta absoluta completa para que WhatsApp encuentre la foto
+        url: "https://bautizo-romina-sofia.invimon.com/fotos/portada.png", 
         width: 1200,
         height: 630,
         alt: "Invitación Digital",
@@ -43,6 +44,14 @@ export const metadata = {
     ],
     locale: "es_MX",
     type: "website",
+  },
+
+  // 3. REFUERZO PARA TWITTER/WHATSAPP (Opcional pero recomendado para asegurar la miniatura)
+  twitter: {
+    card: "summary_large_image",
+    title: "¡Estás Invitado!",
+    description: "Te esperamos con mucha ilusión.",
+    images: ["https://bautizo-romina-sofia.invimon.com/fotos/portada.png"],
   },
 };
 

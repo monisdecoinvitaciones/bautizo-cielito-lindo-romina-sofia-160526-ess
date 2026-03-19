@@ -5,35 +5,42 @@ import './Countdown.css';
 const Countdown = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
-  const targetDate = new Date('2026-05-16T00:00:00').getTime();
+  
+  // Configurado para el 16 de mayo de 2026 a la 1:00 PM (13:00:00)
+  const targetDate = new Date('2026-05-16T13:00:00').getTime();
   
   const [timeLeft, setTimeLeft] = useState({
     days: 0, hours: 0, minutes: 0, seconds: 0
   });
 
+  // Estado para saber si la fecha ya pasó
+  const [isPast, setIsPast] = useState(false);
+
   useEffect(() => {
-    // Observer para la animación (más sensible)
+    // Observer para la animación
     const observer = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) setIsVisible(true); },
-      { threshold: 0.1 } // Se dispara antes para un efecto más fluido
+      { threshold: 0.1 }
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
 
-    // Timer del conteo (más optimizado)
     const timer = setInterval(() => {
       const now = new Date().getTime();
       const distance = targetDate - now;
-      if (distance > 0) {
-        setTimeLeft({
-          days: Math.floor(distance / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-          minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-          seconds: Math.floor((distance % (1000 * 60)) / 1000),
-        });
-      } else {
-        // El tiempo ya pasó, puedes poner 0 o un mensaje
-        clearInterval(timer);
-      }
+
+      // Si la distancia es negativa, la convertimos a positiva para el cálculo
+      // pero activamos el flag de "isPast"
+      const absDistance = Math.abs(distance);
+      setIsPast(distance < 0);
+
+      setTimeLeft({
+        days: Math.floor(absDistance / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((absDistance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+        minutes: Math.floor((absDistance % (1000 * 60 * 60)) / (1000 * 60)),
+        seconds: Math.floor((absDistance % (1000 * 60)) / 1000),
+      });
+      
+      // No limpiamos el intervalo para que siga contando después de llegar a cero
     }, 1000);
 
     return () => {
@@ -44,26 +51,25 @@ const Countdown = () => {
 
   return (
     <section className={`countdown-section ${isVisible ? 'is-visible' : ''}`} ref={sectionRef}>
-      {/* Fondo de imagen (más oscuro y sutil) */}
       <div className="countdown-bg-wrapper">
-       
         <div className="countdown-overlay"></div>
       </div>
 
       {/* --- DECORACIONES DE PAPEL PICADO --- */}
-      {/* Esquina superior izquierda (se ve completa) */}
       <div className="decor-papel-picado decor-top-left">
         <img src="/fotos/papel-picado.png" alt="Decoración Papel Picado Superior" />
       </div>
 
-      {/* Esquina inferior derecha (se corta el borde inferior) */}
       <div className="decor-papel-picado decor-bottom-right">
         <img src="/fotos/papel-picado.png" alt="Decoración Papel Picado Inferior" />
       </div>
       {/* ------------------------------------- */}
 
       <div className="countdown-content">
-        <h3 className="countdown-subtitle fuente-serif">SOLO FALTAN</h3>
+        {/* El título cambia dinámicamente según la fecha */}
+        <h3 className="countdown-subtitle fuente-serif">
+          {isPast ? 'HAN PASADO' : 'SOLO FALTAN'}
+        </h3>
         
         <div className="countdown-grid">
           <div className="time-block anim-1">

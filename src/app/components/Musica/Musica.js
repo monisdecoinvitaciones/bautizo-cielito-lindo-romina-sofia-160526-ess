@@ -7,7 +7,7 @@ export default function Musica() {
   const [yaInicio, setYaInicio] = useState(false);
   const audioRef = useRef(null);
 
-  // CONFIGURACIÓN: Aquí controlas el volumen máximo (0.3 es el 30%)
+  // CONFIGURACIÓN: Volumen máximo (0.1 es el 10% para que sea música de fondo sutil)
   const VOLUMEN_MAXIMO = 0.1; 
 
   useEffect(() => {
@@ -35,13 +35,13 @@ export default function Musica() {
     audio.volume = 0;
     const intervalo = setInterval(() => {
       // Sube el volumen gradualmente hasta llegar al límite configurado
-      if (audio.volume < (VOLUMEN_MAXIMO - 0.05)) {
-        audio.volume += 0.05;
+      if (audio.volume < (VOLUMEN_MAXIMO - 0.01)) {
+        audio.volume += 0.01; // Subida más fina para que sea más suave
       } else {
         audio.volume = VOLUMEN_MAXIMO;
         clearInterval(intervalo);
       }
-    }, 200);
+    }, 100); // Se ejecuta cada 100ms
   };
 
   const toggleMusica = () => {
@@ -50,11 +50,10 @@ export default function Musica() {
 
     if (audio.paused) {
       if (!yaInicio) {
-        audio.currentTime = 45; // Salto inicial
+        // ELIMINADO: audio.currentTime = 45; -> Ahora inicia en 0 por defecto
         setYaInicio(true);
-        fadeIn(audio); // Inicia suave hasta el 30%
+        fadeIn(audio); // Inicia desde silencio hasta el VOLUMEN_MAXIMO
       } else {
-        // Si ya había iniciado, mantenemos el volumen bajo al reanudar
         audio.volume = VOLUMEN_MAXIMO;
       }
       audio.play().catch(err => console.log("Error:", err));
@@ -68,6 +67,7 @@ export default function Musica() {
       <button 
         className={`btn-musica ${reproduciendo ? 'pulsando' : ''}`} 
         onClick={toggleMusica}
+        aria-label={reproduciendo ? "Pausar música" : "Reproducir música"}
       >
         {reproduciendo ? (
           <svg viewBox="0 0 24 24" className="icono-musica">
