@@ -27,7 +27,7 @@ const DressCode = () => {
       
       <div className={`dress-code-container ${sectionVisible ? 'reveal-content' : ''}`}>
         <div className="dress-icon-wrapper">
-          <img src="/fotos/iconos rosa palo/11.png" alt="Dress Code" className="dress-icon" />
+          <img src="/fotos/iconosRosas/11.png" alt="Dress Code" className="dress-icon" />
         </div>
         
         <h2 className="dress-title">Código de Vestimenta</h2>

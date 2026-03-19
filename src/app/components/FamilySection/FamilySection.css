@@ -156,7 +156,7 @@
   
   .family-container {
     flex-direction: column;
-    gap: 100px; /* Espacio aumentado para que se animen por separado al bajar */
+    gap: 80px; /* Espacio aumentado para que se animen por separado al bajar */
   }
 
   /* Estado oculto: Los Padres vienen de Izquierda */

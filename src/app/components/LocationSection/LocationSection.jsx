@@ -23,7 +23,7 @@ const LocationSection = () => {
             <div className="card-ornament-arch"></div>
 
             <div className="icon-wrapper">
-              <img src="/fotos/iconos rosa palo/20.png" alt="Iglesia" />
+              <img src="/fotos/iconosRosas/20.png" alt="Iglesia" />
             </div>
 
             <div className="location-content">
@@ -57,7 +57,7 @@ const LocationSection = () => {
             <div className="card-ornament-arch"></div>
 
             <div className="icon-wrapper">
-              <img src="/fotos/iconos rosa palo/31.png" alt="Fiesta" />
+              <img src="/fotos/iconosRosas/31.png" alt="Fiesta" />
             </div>
 
             <div className="location-content">

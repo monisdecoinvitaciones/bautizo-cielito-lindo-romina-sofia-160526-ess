@@ -1,0 +1,62 @@
+.contenedor-regresar {
+  display: flex;
+  justify-content: center;
+  padding: 60px 0; /* Un poco más de aire */
+  background: transparent;
+}
+
+.enlace-regresar-inicio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  /* Cambiado a Gris Antracita para mayor elegancia */
+  color: #4A4A4A; 
+  font-family: var(--font-moderna);
+  font-size: 0.75rem; /* Más pequeño y minimalista */
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 4px; /* Espaciado premium */
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.flecha-inicio {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Borde sutil en el rosa viejo */
+  border: 1px solid rgba(181, 131, 141, 0.3); 
+  border-radius: 50%;
+  /* Fondo rosa suave */
+  background-color: #fdf5f6; 
+  color: #b5838d;
+  transition: all 0.4s ease;
+  padding: 10px;
+}
+
+/* EFECTO HOVER REFINADO */
+.enlace-regresar-inicio:hover {
+  color: #b5838d; /* Cambia al rosa oscuro */
+  transform: translateY(-8px);
+}
+
+.enlace-regresar-inicio:hover .flecha-inicio {
+  /* Al pasar el mouse, el fondo se vuelve el rosa principal */
+  background-color: #d88a9a; 
+  color: #ffffff; /* La flecha interna se pone blanca */
+  border-color: transparent;
+  box-shadow: 0 10px 20px rgba(181, 131, 141, 0.2);
+}
+
+/* Animación de flotación suave */
+@keyframes floatSubtle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.enlace-regresar-inicio:hover .flecha-inicio {
+  animation: floatSubtle 2s ease-in-out infinite;
+}

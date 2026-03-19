@@ -12,6 +12,7 @@ import RSVPSection from "./components/RSVPSection/RSVPSection";
 import MesaRegalos from "./components/MesaRegalos/MesaRegalos";
 import FooterInvimon from "./components/FooterInvimon/FooterInvimon";
 import Musica from "./components/Musica/Musica";
+import BotonInicio from "./components/BotonInicio/BotonInicio";
 
 export default function Page() {
   return (
@@ -31,6 +32,7 @@ export default function Page() {
       <MesaRegalos/>
       <RSVPSection/>
      <Countdown/> 
+     <BotonInicio/>
      <QuoteSection/>
      <FooterInvimon/>
      <Musica/>

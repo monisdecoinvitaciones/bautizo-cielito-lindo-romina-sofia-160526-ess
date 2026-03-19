@@ -10,7 +10,7 @@ export default function HeroBautizo() {
   };
 
   return (
-    <section className="hero-premium">
+    <section className="hero-premium" id='inicio'>
       {/* Contenedor de imagen con máscara de brillo */}
       <div className="hero-visual">
         <div className="hero-foto-fondo"></div>
