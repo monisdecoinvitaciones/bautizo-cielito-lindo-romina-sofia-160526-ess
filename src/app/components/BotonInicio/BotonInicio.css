@@ -1,7 +1,7 @@
 .contenedor-regresar {
   display: flex;
   justify-content: center;
-  padding: 30px 0; /* Un poco más de aire */
+  padding: 60px 0; /* Más aire para que destaque al final */
   background: transparent;
 }
 
@@ -9,54 +9,71 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 15px;
   text-decoration: none;
-  /* Cambiado a Gris Antracita para mayor elegancia */
   color: #4A4A4A; 
   font-family: var(--font-moderna);
-  font-size: 0.75rem; /* Más pequeño y minimalista */
+  font-size: 0.7rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 4px; /* Espaciado premium */
-  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  letter-spacing: 5px;
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  /* Animación constante para llamar la atención */
+  animation: floatConstante 3s ease-in-out infinite;
 }
 
 .flecha-inicio {
-  width: 45px;
-  height: 45px;
+  width: 50px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* Borde sutil en el rosa viejo */
   border: 1px solid rgba(181, 131, 141, 0.3); 
   border-radius: 50%;
-  /* Fondo rosa suave */
   background-color: #fdf5f6; 
   color: #b5838d;
   transition: all 0.4s ease;
-  padding: 10px;
+  padding: 12px;
+  box-shadow: 0 5px 15px rgba(181, 131, 141, 0.1);
 }
 
-/* EFECTO HOVER REFINADO */
+/* --- ESTADO HOVER --- */
 .enlace-regresar-inicio:hover {
-  color: #b5838d; /* Cambia al rosa oscuro */
-  transform: translateY(-8px);
+  color: #b5838d;
+  /* Al pasar el mouse, se detiene la animación suave y sube más */
+  animation-play-state: paused; 
+  transform: translateY(-12px);
 }
 
 .enlace-regresar-inicio:hover .flecha-inicio {
-  /* Al pasar el mouse, el fondo se vuelve el rosa principal */
-  background-color: #d88a9a; 
-  color: #ffffff; /* La flecha interna se pone blanca */
+  background-color: #b5838d; 
+  color: #ffffff;
   border-color: transparent;
-  box-shadow: 0 10px 20px rgba(181, 131, 141, 0.2);
+  box-shadow: 0 15px 30px rgba(181, 131, 141, 0.25);
+  transform: scale(1.1); /* Crece un poquito al tacto */
 }
 
-/* Animación de flotación suave */
-@keyframes floatSubtle {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
+/* --- ANIMACIÓN DE FLOTACIÓN --- */
+@keyframes floatConstante {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px); /* El movimiento hacia arriba */
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
-.enlace-regresar-inicio:hover .flecha-inicio {
-  animation: floatSubtle 2s ease-in-out infinite;
+/* Ajuste para móvil: Animación un poco más corta para no distraer tanto */
+@media (max-width: 768px) {
+  .contenedor-regresar {
+    padding: 40px 0;
+  }
+  
+  @keyframes floatConstante {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
 }

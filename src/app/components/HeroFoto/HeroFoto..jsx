@@ -4,14 +4,19 @@ import './HeroFoto.css';
 
 const HeroFoto = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [selectedImg, setSelectedImg] = useState(null); // Estado para el Modal
+  const [selectedImg, setSelectedImg] = useState(null);
   const sectionRef = useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setIsVisible(true); },
-      { threshold: 0.2 }
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.15 } // Se activa antes para que no se vea el "salto"
     );
+
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
@@ -20,21 +25,27 @@ const HeroFoto = () => {
   const closeModal = () => setSelectedImg(null);
 
   return (
-    <section className="hero-photo-section" ref={sectionRef}>
+    <section className={`hero-photo-section ${isVisible ? 'is-revealed' : 'is-hidden'}`} ref={sectionRef}>
       <div className="photo-guirnalda-full"></div>
 
-      <div className={`photos-dual-container ${isVisible ? 'reveal-visible' : 'reveal-hidden'}`}>
+      <div className="photos-dual-container">
         
-        {/* FOTO 1 */}
-        <div className="photo-frame-wrapper main-photo" onClick={() => openModal("/fotos/4.jpeg")}>
+        {/* FOTO 1 - PRINCIPAL */}
+        <div 
+          className="photo-frame-wrapper main-photo anim-delay-1" 
+          onClick={() => openModal("/fotos/4.jpeg")}
+        >
           <div className="photo-arch-frame">
             <div className="arch-border-line-gold"></div>
             <img src="/fotos/4.jpeg" alt="Festejada 1" className="main-hero-img" />
           </div>
         </div>
 
-        {/* FOTO 2 */}
-        <div className="photo-frame-wrapper secondary-photo" onClick={() => openModal("/fotos/3.jpeg")}>
+        {/* FOTO 2 - SECUNDARIA */}
+        <div 
+          className="photo-frame-wrapper secondary-photo anim-delay-2" 
+          onClick={() => openModal("/fotos/3.jpeg")}
+        >
           <div className="photo-arch-frame">
             <div className="arch-border-line-gold"></div>
             <img src="/fotos/3.jpeg" alt="Festejada 2" className="main-hero-img" />
@@ -42,7 +53,7 @@ const HeroFoto = () => {
         </div>
       </div>
 
-      <div className={`photo-caption ${isVisible ? 'reveal-visible' : 'reveal-hidden'}`} style={{transitionDelay: '0.4s'}}>
+      <div className="photo-caption anim-delay-3">
         <span className="caption-divider"></span>
         <p className="caption-text">Nuestra pequeña bendición</p>
       </div>

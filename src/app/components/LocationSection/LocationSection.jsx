@@ -42,7 +42,7 @@ const LocationSection = () => {
               </p>
 
               <a 
-                href="https://maps.app.goo.gl/EjemploIglesia"
+                href="https://maps.app.goo.gl/BXcctT54bcdZxxSb7?g_st=ac"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="maps-button"
@@ -75,7 +75,7 @@ const LocationSection = () => {
               </p>
 
               <a 
-                href="https://maps.app.goo.gl/EjemploRecepcion"
+                href="https://maps.app.goo.gl/7vUfGzxDc2md7cQy6?g_st=ac"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="maps-button"

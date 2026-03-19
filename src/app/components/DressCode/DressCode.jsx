@@ -1,25 +1,32 @@
 'use client';
 import React from 'react';
-import { useReveal } from '../../hooks/useReveal'; // Ajusta la ruta si es necesario
+import { useReveal } from '../../hooks/useReveal'; 
 import './DressCode.css';
 
 const DressCode = () => {
   const [sectionRef, sectionVisible] = useReveal(0.1);
   const [colorsRef, colorsVisible] = useReveal(0.3);
 
-  const femalePastels = [
-    { id: 'f1', hex: '#FDF5F6', name: 'Pétalo' },
-    { id: 'f2', hex: '#F9F1E7', name: 'Champán' },
-    { id: 'f3', hex: '#E8A0AD', name: 'Malva' },
-    { id: 'f4', hex: '#B5838D', name: 'Rosa Viejo' },
-  ];
+  // PALETA INTEGRADA Y UNIFICADA (Originales + Nuevos)
+ const unifiedPastelPalette = [
+  // --- LOS NUEVOS (Ya son pastel) ---
+  { id: 'p1', hex: '#FFFACD', name: 'Lemon' },       // Lemon Chiffon
+  { id: 'p2', hex: '#FFDAB9', name: 'Peach' },       // Peach Puff
+  { id: 'p3', hex: '#DCD0FF', name: 'Lila' },       // Pale Lilac
+  { id: 'p4', hex: '#F5E6BE', name: 'Beige' },       // Beige (Suavizado)
 
-  const malePastels = [
-    { id: 'm1', hex: '#F4F7F6', name: 'Hielo' },
-    { id: 'm2', hex: '#D4E2D4', name: 'Eucalipto' },
-    { id: 'm3', hex: '#CAD2C5', name: 'Bruma' },
-    { id: 'm4', hex: '#91A3B0', name: 'Pizarra' },
-  ];
+  // --- LOS TUYOS (Versión Pastelizada) ---
+  { id: 'p5', hex: '#F2C6CF', name: 'Malva' },       // Más luz
+  { id: 'p6', hex: '#EAD7D9', name: 'Rosa Ceniza' },  // Menos café, más pastel
+  { id: 'p7', hex: '#D4E2D4', name: 'Eucalipto' },  // Este es perfecto
+  { id: 'p8', hex: '#D1DBE2', name: 'Celeste Grisáceo' },     // Más claro
+  
+  // --- LOS NEUTROS DE APOYO ---
+  { id: 'p9', hex: '#CAD2C5', name: 'Bruma' },
+  { id: 'p10', hex: '#FDF5F6', name: 'Pétalo' },
+  { id: 'p11', hex: '#F9F1E7', name: 'Champán' },
+  { id: 'p12', hex: '#F4F7F6', name: 'Hielo' },
+];
 
   return (
     <section className="dress-code-section" ref={sectionRef}>
@@ -35,36 +42,19 @@ const DressCode = () => {
 
         <div className="dress-colors-wrapper" ref={colorsRef}>
           
-          {/* SECCIÓN MUJERES */}
-          <div className="gender-palette">
-            <p className="colors-subtitle">Sugerencia Damas:</p>
+          <div className="unified-palette">
+            {/* Se quitó la distinción de Damas/Caballeros */}
+            <p className="colors-subtitle">Paleta de colores sugerida:</p>
+            
             <div className="colors-grid">
-              {femalePastels.map((color, index) => (
+              {unifiedPastelPalette.map((color, index) => (
                 <div key={color.id} className="color-item">
                   <div 
                     className={`color-circle ${colorsVisible ? 'reveal-circle' : ''}`}
                     style={{ 
                       backgroundColor: color.hex,
-                      transitionDelay: `${index * 0.1}s` 
-                    }}
-                  ></div>
-                  <span className="color-name">{color.name}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* SECCIÓN HOMBRES */}
-          <div className="gender-palette">
-            <p className="colors-subtitle">Sugerencia Caballeros:</p>
-            <div className="colors-grid">
-              {malePastels.map((color, index) => (
-                <div key={color.id} className="color-item">
-                  <div 
-                    className={`color-circle ${colorsVisible ? 'reveal-circle' : ''}`}
-                    style={{ 
-                      backgroundColor: color.hex,
-                      transitionDelay: `${(index + 4) * 0.1}s` 
+                      // Ajuste del delay para que la animación sea fluida con 12 círculos
+                      transitionDelay: `${index * 0.08}s` 
                     }}
                   ></div>
                   <span className="color-name">{color.name}</span>
@@ -74,6 +64,7 @@ const DressCode = () => {
           </div>
 
         </div>
+
       </div>
 
       <div className={`dress-line ${sectionVisible ? 'reveal-line' : ''}`}></div>
