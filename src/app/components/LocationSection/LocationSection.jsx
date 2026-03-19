@@ -75,7 +75,7 @@ const LocationSection = () => {
               </p>
 
               <a 
-                href="https://maps.app.goo.gl/7vUfGzxDc2md7cQy6?g_st=ac"
+                href="https://maps.app.goo.gl/R5MVdhJB1pva4BA46"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="maps-button"

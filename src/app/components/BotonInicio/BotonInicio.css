@@ -1,7 +1,7 @@
 .contenedor-regresar {
   display: flex;
   justify-content: center;
-  padding: 60px 0; /* Más aire para que destaque al final */
+  padding: 65px 0; /* Más aire para que destaque al final */
   background: transparent;
 }
 
@@ -69,7 +69,7 @@
 /* Ajuste para móvil: Animación un poco más corta para no distraer tanto */
 @media (max-width: 768px) {
   .contenedor-regresar {
-    padding: 40px 0;
+    padding: 20px 0;
   }
   
   @keyframes floatConstante {
